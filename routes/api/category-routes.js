@@ -8,7 +8,18 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Products
   try {
     const categoryData = await Category.findAll({
-      include: [{ model: Product }]
+      include: { 
+        model: Product
+        // through: {
+          // attributes: [
+            // 'id', 
+            // 'product_name',
+            // 'price',
+            // 'stock',
+            // 'category_id'
+          // ]
+        // }
+       }
     });
     res.status(200).json(categoryData);
   } catch (err) {
@@ -19,7 +30,6 @@ router.get('/', async (req, res) => {
 router.get('/:id', (req, res) => {
   // find one category by its `id` value
   // be sure to include its associated Products
-  
 });
 
 router.post('/', (req, res) => {
