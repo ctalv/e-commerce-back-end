@@ -11,9 +11,9 @@ router.get('/', async (req, res) => {
   const productData = await Product.findAll({
     include: [{ model: Category },{ model: Tag }],
     // attributes: {
-    //   include: [
-    //     [sequelize.literal('(SELECT COUNT(*) FROM `product-tag` WHERE `product-tag`.`product_id` = `product`.`id`)'), 'tagCount']
-    //   ]
+    //   include: [[
+    //       sequelize.literal('SELECT COUNT(*) FROM product_tag WHERE product_tag.product_id = product.id'), 'tagCount'
+    //   ]]
     // }
   });
   
